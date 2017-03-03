@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <string.h>
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 //	Using Only K&R
@@ -8,8 +9,10 @@ using namespace std;
 void Problema01_Parentesis_Balanceados() {
 
 int Casos_de_Prueba=0,ContadorLineasReales,i;
-char* Mensaje_por_lineas;
+char  Mensaje_por_lineas;
 string Mensaje_por_lineas2;
+bool band;
+
 ifstream Ejemplo01;
 
 Ejemplo01.open("Ejemplo01.txt");
@@ -24,17 +27,22 @@ Ejemplo01.open("Ejemplo01.txt");
 	while( !Ejemplo01.eof() )  {
          
 		
-		Ejemplo01.getline(Mensaje_por_lineas,100,'\n');
-		Mensaje_por_lineas2=Mensaje_por_lineas;
+		getline ( Ejemplo01, Mensaje_por_lineas2 );
+		char* Caracter_a_Caracter = new char[ Mensaje_por_lineas2.length() + 1 ];
+		strcpy(Caracter_a_Caracter,Mensaje_por_lineas2.c_str());
+		cout<<Caracter_a_Caracter;
+		cout<<" Caso # "<<ContadorLineasReales;
 		
 		
-	    for	(int i=0;i<Mensaje_por_lineas2.length();i++)
-	    {
-	    	
-	    	cout<<Mensaje_por_lineas2[i]<<" ";
-	    		    	
+		
+		
+		if ( band )
+		{
+			
+			cout<<"Parentesis Balanceados"<<endl;
+			
 		}
-		cout<<"Caso # "<<ContadorLineasReales<<endl;
+		
 		ContadorLineasReales++;
 		cin.get();
 	//	cout<<Mensaje_por_lineas;
