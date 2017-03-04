@@ -9,6 +9,8 @@ void Problema01_Parentesis_Balanceados() {
 
 int Casos_de_Prueba=0,ContadorLineasReales,i;
 char* Mensaje_por_lineas;
+char  Confirmacion_Emoti[2]="";
+int band;
 string Mensaje_por_lineas2;
 ifstream Ejemplo01;
 
@@ -33,8 +35,35 @@ Ejemplo01.open("Ejemplo01.txt");
 	    	
 	    	cout<<Mensaje_por_lineas2[i]<<" ";
 	    		    	
+						if ( i-1>-1 )
+						{
+							
+							if( ( Mensaje_por_lineas2[i]==':' && Mensaje_por_lineas2[i-1]=='(' ) || ( Mensaje_por_lineas2[i]==':' && Mensaje_por_lineas2[i-1]==')' ) )
+							{
+								
+								band=1;
+								
+							}
+							
+							if ( ( ) ) 
+							{
+							
+							
+							
+							}
+							
+						}
+								}
+								
+		cout<<"Caso # "<<ContadorLineasReales;
+		if ( band==1  ) 
+		{
+			cout<<"Parentesis Balanceados"<<endl;
 		}
-		cout<<"Caso # "<<ContadorLineasReales<<endl;
+		else
+		{
+			cout<<" Parentesis No Balanceados"<<endl;
+		}
 		ContadorLineasReales++;
 		cin.get();
 	//	cout<<Mensaje_por_lineas;
