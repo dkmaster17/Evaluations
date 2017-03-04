@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <string.h>
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 //	Using Only K&R
@@ -8,10 +9,9 @@ using namespace std;
 void Problema01_Parentesis_Balanceados() {
 
 int Casos_de_Prueba=0,ContadorLineasReales,i;
-char* Mensaje_por_lineas;
-char  Confirmacion_Emoti[2]="";
-int band;
 string Mensaje_por_lineas2;
+bool band;
+
 ifstream Ejemplo01;
 
 Ejemplo01.open("Ejemplo01.txt");
@@ -25,45 +25,64 @@ Ejemplo01.open("Ejemplo01.txt");
 	Ejemplo01>>Casos_de_Prueba;
 	while( !Ejemplo01.eof() )  {
          
+		band=false;
+		getline ( Ejemplo01, Mensaje_por_lineas2 );
+		char* Caracter_a_Caracter = new char[ Mensaje_por_lineas2.length() + 1 ];
+		strcpy(Caracter_a_Caracter,Mensaje_por_lineas2.c_str());
 		
-		Ejemplo01.getline(Mensaje_por_lineas,100,'\n');
-		Mensaje_por_lineas2=Mensaje_por_lineas;
+		cout<<Caracter_a_Caracter;
+		cout<<" Caso # "<<ContadorLineasReales;
 		
-		
-	    for	(int i=0;i<Mensaje_por_lineas2.length();i++)
-	    {
-	    	
-	    	cout<<Mensaje_por_lineas2[i]<<" ";
-	    		    	
-						if ( i-1>-1 )
-						{
-							
-							if( ( Mensaje_por_lineas2[i]==':' && Mensaje_por_lineas2[i-1]=='(' ) || ( Mensaje_por_lineas2[i]==':' && Mensaje_por_lineas2[i-1]==')' ) )
-							{
-								
-								band=1;
-								
-							}
-							
-							if ( ( ) ) 
-							{
-							
-							
-							
-							}
-							
-						}
-								}
-								
-		cout<<"Caso # "<<ContadorLineasReales;
-		if ( band==1  ) 
+		for	(i=0;i<strlen(Caracter_a_Caracter);i++)
 		{
+			
+			if(i-1>-1)
+			{
+					
+			if ( ( ':'==Caracter_a_Caracter[i-1] && '('==Caracter_a_Caracter[i] ) || ( ':'==Caracter_a_Caracter[i-1] && ')'==Caracter_a_Caracter[i] ) )//Validando emoticonos.
+			{
+				band=true;
+			}
+			else if ( ( ')'==Caracter_a_Caracter[i-1] && '('==Caracter_a_Caracter[i] )  )
+			{
+				band=false;
+			}
+			if('('==Caracter_a_Caracter[i])//Con los parentesis de apertura y cierre correctamente puestos
+				{
+			
+			   for (j=i;j<strlen(Caracter_a_Caracter);j++)
+			   {
+			   		if ( ')'==Caracter_a_Caracter[j] )
+			   		{
+			   		band=true;
+			   		break;	
+					}
+			   }
+				
+				}
+			}
+			
+			
+		}
+		if ( ""==Caracter_a_Caracter || " "==Caracter_a_Caracter )//Si cadena vacia
+			{
+				
+			band=true;	
+				
+			}
+		
+		
+		
+		if ( band )
+		{
+			
 			cout<<"Parentesis Balanceados"<<endl;
-		}
-		else
+			
+		}else
 		{
-			cout<<" Parentesis No Balanceados"<<endl;
+			cout<<"Parentesis no balanceados"<<endl;
 		}
+		
 		ContadorLineasReales++;
 		cin.get();
 	//	cout<<Mensaje_por_lineas;
